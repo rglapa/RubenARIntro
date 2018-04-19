@@ -14,6 +14,24 @@
 		456E75A22075A63D002073E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 456E75A12075A63D002073E4 /* Assets.xcassets */; };
 		456E75A52075A63D002073E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 456E75A32075A63D002073E4 /* LaunchScreen.storyboard */; };
 		456E75B02075A63E002073E4 /* RubenARIntroUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456E75AF2075A63E002073E4 /* RubenARIntroUITests.swift */; };
+		456E75BC2075A741002073E4 /* FocusSquare.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456E75BB2075A741002073E4 /* FocusSquare.swift */; };
+		456E75BE2075A768002073E4 /* FocusSquareSegment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 456E75BD2075A768002073E4 /* FocusSquareSegment.swift */; };
+		840392A9208522760088562C /* StatusViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840392A8208522760088562C /* StatusViewController.swift */; };
+		840392AB208522840088562C /* VirtualObjectSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 840392AA208522840088562C /* VirtualObjectSelection.swift */; };
+		84878CE8207C263200331265 /* VirtualObjectLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84878CE7207C263200331265 /* VirtualObjectLoader.swift */; };
+		84878CEA207C26DF00331265 /* VirtualObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84878CE9207C26DF00331265 /* VirtualObject.swift */; };
+		84878CED207C385800331265 /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84878CEC207C385800331265 /* Utilities.swift */; };
+		84878CF6207C3E6B00331265 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 84878CF1207C3E6B00331265 /* Assets.xcassets */; };
+		84878CF7207C3E6B00331265 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 84878CF2207C3E6B00331265 /* Info.plist */; };
+		84878CF8207C3E6B00331265 /* Models.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = 84878CF3207C3E6B00331265 /* Models.scnassets */; };
+		84878CF9207C3E6B00331265 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84878CF4207C3E6B00331265 /* LaunchScreen.storyboard */; };
+		84878CFA207C3E6B00331265 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 84878CF5207C3E6B00331265 /* Main.storyboard */; };
+		84DB4098207E8A5B00C5BE8C /* VirtualObjectARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB4097207E8A5B00C5BE8C /* VirtualObjectARView.swift */; };
+		84DB409B207E93EC00C5BE8C /* ViewController+ARSCNViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB409A207E93EC00C5BE8C /* ViewController+ARSCNViewDelegate.swift */; };
+		84DB409D207E941700C5BE8C /* ViewController+Actions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB409C207E941700C5BE8C /* ViewController+Actions.swift */; };
+		84DB409F207E942B00C5BE8C /* ViewController+ObjectSelection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB409E207E942B00C5BE8C /* ViewController+ObjectSelection.swift */; };
+		84DB40A1207E944C00C5BE8C /* VirtualObjectInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB40A0207E944C00C5BE8C /* VirtualObjectInteraction.swift */; };
+		84DB40A3207E946100C5BE8C /* ThresholdPanGesture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84DB40A2207E946100C5BE8C /* ThresholdPanGesture.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +56,24 @@
 		456E75AB2075A63E002073E4 /* RubenARIntroUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RubenARIntroUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		456E75AF2075A63E002073E4 /* RubenARIntroUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RubenARIntroUITests.swift; sourceTree = "<group>"; };
 		456E75B12075A63E002073E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		456E75BB2075A741002073E4 /* FocusSquare.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquare.swift; sourceTree = "<group>"; };
+		456E75BD2075A768002073E4 /* FocusSquareSegment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FocusSquareSegment.swift; sourceTree = "<group>"; };
+		840392A8208522760088562C /* StatusViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusViewController.swift; sourceTree = "<group>"; };
+		840392AA208522840088562C /* VirtualObjectSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectSelection.swift; sourceTree = "<group>"; };
+		84878CE7207C263200331265 /* VirtualObjectLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectLoader.swift; sourceTree = "<group>"; };
+		84878CE9207C26DF00331265 /* VirtualObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObject.swift; sourceTree = "<group>"; };
+		84878CEC207C385800331265 /* Utilities.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
+		84878CF1207C3E6B00331265 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		84878CF2207C3E6B00331265 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		84878CF3207C3E6B00331265 /* Models.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = Models.scnassets; sourceTree = "<group>"; };
+		84878CF4207C3E6B00331265 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen.storyboard; sourceTree = "<group>"; };
+		84878CF5207C3E6B00331265 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		84DB4097207E8A5B00C5BE8C /* VirtualObjectARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectARView.swift; sourceTree = "<group>"; };
+		84DB409A207E93EC00C5BE8C /* ViewController+ARSCNViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ARSCNViewDelegate.swift"; sourceTree = "<group>"; };
+		84DB409C207E941700C5BE8C /* ViewController+Actions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+Actions.swift"; sourceTree = "<group>"; };
+		84DB409E207E942B00C5BE8C /* ViewController+ObjectSelection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ViewController+ObjectSelection.swift"; sourceTree = "<group>"; };
+		84DB40A0207E944C00C5BE8C /* VirtualObjectInteraction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VirtualObjectInteraction.swift; sourceTree = "<group>"; };
+		84DB40A2207E946100C5BE8C /* ThresholdPanGesture.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThresholdPanGesture.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +98,11 @@
 			isa = PBXGroup;
 			children = (
 				456E75972075A63B002073E4 /* RubenARIntro */,
+				84878CE6207C260C00331265 /* Virtual Objects */,
+				456E75BA2075A6FC002073E4 /* Focus Square */,
+				84DB4099207E938E00C5BE8C /* Additional View Controllers */,
+				84878CEB207C382B00331265 /* Utilities */,
+				84878CF0207C3E5100331265 /* Resources */,
 				456E75AE2075A63E002073E4 /* RubenARIntroUITests */,
 				456E75962075A63B002073E4 /* Products */,
 			);
@@ -80,10 +121,16 @@
 			isa = PBXGroup;
 			children = (
 				456E75982075A63B002073E4 /* AppDelegate.swift */,
-				456E759A2075A63B002073E4 /* art.scnassets */,
 				456E759C2075A63B002073E4 /* ViewController.swift */,
-				456E759E2075A63B002073E4 /* Main.storyboard */,
+				84DB409A207E93EC00C5BE8C /* ViewController+ARSCNViewDelegate.swift */,
+				84DB409C207E941700C5BE8C /* ViewController+Actions.swift */,
+				84DB409E207E942B00C5BE8C /* ViewController+ObjectSelection.swift */,
+				84DB40A0207E944C00C5BE8C /* VirtualObjectInteraction.swift */,
+				84DB40A2207E946100C5BE8C /* ThresholdPanGesture.swift */,
+				84DB4097207E8A5B00C5BE8C /* VirtualObjectARView.swift */,
 				456E75A12075A63D002073E4 /* Assets.xcassets */,
+				456E759A2075A63B002073E4 /* art.scnassets */,
+				456E759E2075A63B002073E4 /* Main.storyboard */,
 				456E75A32075A63D002073E4 /* LaunchScreen.storyboard */,
 				456E75A62075A63D002073E4 /* Info.plist */,
 			);
@@ -97,6 +144,53 @@
 				456E75B12075A63E002073E4 /* Info.plist */,
 			);
 			path = RubenARIntroUITests;
+			sourceTree = "<group>";
+		};
+		456E75BA2075A6FC002073E4 /* Focus Square */ = {
+			isa = PBXGroup;
+			children = (
+				456E75BB2075A741002073E4 /* FocusSquare.swift */,
+				456E75BD2075A768002073E4 /* FocusSquareSegment.swift */,
+			);
+			path = "Focus Square";
+			sourceTree = "<group>";
+		};
+		84878CE6207C260C00331265 /* Virtual Objects */ = {
+			isa = PBXGroup;
+			children = (
+				84878CE9207C26DF00331265 /* VirtualObject.swift */,
+				84878CE7207C263200331265 /* VirtualObjectLoader.swift */,
+			);
+			path = "Virtual Objects";
+			sourceTree = "<group>";
+		};
+		84878CEB207C382B00331265 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				84878CEC207C385800331265 /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		84878CF0207C3E5100331265 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				84878CF3207C3E6B00331265 /* Models.scnassets */,
+				84878CF1207C3E6B00331265 /* Assets.xcassets */,
+				84878CF2207C3E6B00331265 /* Info.plist */,
+				84878CF5207C3E6B00331265 /* Main.storyboard */,
+				84878CF4207C3E6B00331265 /* LaunchScreen.storyboard */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		84DB4099207E938E00C5BE8C /* Additional View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				840392A8208522760088562C /* StatusViewController.swift */,
+				840392AA208522840088562C /* VirtualObjectSelection.swift */,
+			);
+			path = "Additional View Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,9 +275,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				456E759B2075A63B002073E4 /* art.scnassets in Resources */,
+				84878CF9207C3E6B00331265 /* LaunchScreen.storyboard in Resources */,
 				456E75A52075A63D002073E4 /* LaunchScreen.storyboard in Resources */,
+				84878CF7207C3E6B00331265 /* Info.plist in Resources */,
 				456E75A22075A63D002073E4 /* Assets.xcassets in Resources */,
 				456E75A02075A63B002073E4 /* Main.storyboard in Resources */,
+				84878CFA207C3E6B00331265 /* Main.storyboard in Resources */,
+				84878CF6207C3E6B00331265 /* Assets.xcassets in Resources */,
+				84878CF8207C3E6B00331265 /* Models.scnassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,8 +300,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				840392A9208522760088562C /* StatusViewController.swift in Sources */,
+				84DB4098207E8A5B00C5BE8C /* VirtualObjectARView.swift in Sources */,
 				456E759D2075A63B002073E4 /* ViewController.swift in Sources */,
+				456E75BC2075A741002073E4 /* FocusSquare.swift in Sources */,
+				84DB40A3207E946100C5BE8C /* ThresholdPanGesture.swift in Sources */,
+				84878CED207C385800331265 /* Utilities.swift in Sources */,
+				84878CEA207C26DF00331265 /* VirtualObject.swift in Sources */,
+				84878CE8207C263200331265 /* VirtualObjectLoader.swift in Sources */,
+				84DB409D207E941700C5BE8C /* ViewController+Actions.swift in Sources */,
+				84DB409F207E942B00C5BE8C /* ViewController+ObjectSelection.swift in Sources */,
+				840392AB208522840088562C /* VirtualObjectSelection.swift in Sources */,
+				84DB409B207E93EC00C5BE8C /* ViewController+ARSCNViewDelegate.swift in Sources */,
 				456E75992075A63B002073E4 /* AppDelegate.swift in Sources */,
+				456E75BE2075A768002073E4 /* FocusSquareSegment.swift in Sources */,
+				84DB40A1207E944C00C5BE8C /* VirtualObjectInteraction.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -295,7 +407,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -349,7 +461,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
@@ -365,6 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y8QKBVB7WJ;
 				INFOPLIST_FILE = RubenARIntro/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -383,6 +496,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = Y8QKBVB7WJ;
 				INFOPLIST_FILE = RubenARIntro/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.3;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

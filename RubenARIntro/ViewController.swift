@@ -6,75 +6,186 @@
 //  Copyright © 2018 Ruben Glapa. All rights reserved.
 //
 
-import UIKit
-import SceneKit
 import ARKit
+import SceneKit
+import UIKit
 
-class ViewController: UIViewController, ARSCNViewDelegate {
+class ViewController: UIViewController {
 
-    @IBOutlet var sceneView: ARSCNView!
+    // MARK: IBOutlets
+    
+    @IBOutlet var sceneView: VirtualObjectARView!
+    
+    @IBOutlet weak var addObjectButton: UIButton!
+    
+    @IBOutlet weak var blurView: UIVisualEffectView!
+    
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
+    
+    // MARK: - UI Elements
+    
+    var focusSquare = FocusSquare()
+    
+    /// The view controller that displays the status and "restart experience" UI.
+    lazy var statusViewController: StatusViewController = {
+        return childViewControllers.lazy.flatMap({ $0 as? StatusViewController }).first!
+    }()
+    
+    /// The view controller that displays the virtual object selection menu.
+    var objectsViewController: VirtualObjectSelectionViewController?
+    
+    // MARK: - ARKit Configuration Properties
+    
+    /// A type which manages gesture manipulation of virtual content in the scene.
+    lazy var virtualObjectInteraction = VirtualObjectInteraction(sceneView: sceneView)
+    
+    /// Coordinates the loading and unloading of reference nodes for virtual objects.
+    let virtualObjectLoader = VirtualObjectLoader()
+    
+    /// Marks if the AR experience is available for restart.
+    var isRestartAvailable = true
+    
+    /// A serial queue used to coordinate adding or removing nodes from the scene.
+    let updateQueue = DispatchQueue(label: "com.example.apple-samplecode.arkitexample.serialSceneKitQueue")
+    
+    var screenCenter: CGPoint {
+        let bounds = sceneView.bounds
+        return CGPoint(x: bounds.midX, y: bounds.midY)
+    }
+    
+    /// Convenience accessor for the session owned by ARSCNView.
+    var session: ARSession {
+        return sceneView.session
+    }
+    
+    // MARK: - View Controller Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         // Set the view's delegate
         sceneView.delegate = self
+        sceneView.session.delegate = self
         
-        // Show statistics such as fps and timing information
-        sceneView.showsStatistics = true
+        // Set up scene content.
+        setupCamera()
+        sceneView.scene.rootNode.addChildNode(focusSquare)
         
-        // Create a new scene
-        let scene = SCNScene(named: "art.scnassets/ship.scn")!
+        /*
+         The `sceneView.automaticallyUpdatesLighting` option creates an
+         ambient light source and modulates its intensity. This sample app
+         instead modulates a global lighting environment map for use with
+         physically based materials, so disable automatic lighting
+         */
+        sceneView.automaticallyUpdatesLighting = false
+        if let environmentMap = UIImage(named: "Models.scnassets/sharedImages/environment_blur.exr") {
+            sceneView.scene.lightingEnvironment.contents = environmentMap
+        }
         
-        // Set the scene to the view
-        sceneView.scene = scene
+        // Hook up status view controller callback(s).
+        statusViewController.restartExperienceHandler = { [unowned self] in
+            self.restartExperience()
+        }
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action:
+            #selector(showVirtualObjectSelectionViewController))
+        // Set the delegate to ensure this gesture is only used when there are no virtual objects in the scene.
+        tapGesture.delegate = self
+        sceneView.addGestureRecognizer(tapGesture)
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         
-        // Create a session configuration
-        let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
-        sceneView.session.run(configuration)
+        // Prevent the screen from being dimmed to avoid interrupting the AR experience.
+        UIApplication.shared.isIdleTimerDisabled = true
+        
+        // Start the `ARSession`.
+        resetTracking()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Pause the view's session
-        sceneView.session.pause()
+        session.pause()
     }
     
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Release any cached data, images, etc that aren't in use.
-    }
-
-    // MARK: - ARSCNViewDelegate
+    // MARK: - Scene content setup
     
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
-    
-    func session(_ session: ARSession, didFailWithError error: Error) {
-        // Present an error message to the user
+    func setupCamera() {
+        guard let camera = sceneView.pointOfView?.camera else {
+            fatalError("Expected a valid `pointOfView` from the scene.")
+        }
         
+        /*
+         Enable HDR camera settings for the most realistic appearance
+         with environmental lighting and physically based materials.
+         */
+        camera.wantsHDR = true
+        camera.exposureOffset = -1
+        camera.minimumExposure = -1
+        camera.maximumExposure = 3
     }
     
-    func sessionWasInterrupted(_ session: ARSession) {
-        // Inform the user that the session has been interrupted, for example, by presenting an overlay
+    // MARK: - Session management
+    
+    /// Creates a new AR configuration to run on the `session`.
+    func resetTracking() {
+        virtualObjectInteraction.selectedObject = nil
         
+        let configuration = ARWorldTrackingConfiguration()
+        configuration.planeDetection = [.horizontal, .vertical]
+        session.run(configuration, options: [.resetTracking, .removeExistingAnchors])
+        
+        statusViewController.scheduleMessage("FIND A SURFACE TO PLACE AN OBJECT", inSeconds: 7.5, messageType: .planeEstimation)
     }
     
-    func sessionInterruptionEnded(_ session: ARSession) {
-        // Reset tracking and/or remove existing anchors if consistent tracking is required
+    // MARK: - Focus Square
+    
+    func updateFocusSquare() {
+        let isObjectVisible = virtualObjectLoader.loadedObjects.contains { object in
+            return sceneView.isNode(object, insideFrustumOf: sceneView.pointOfView!)
+        }
         
+        if isObjectVisible {
+            focusSquare.hide()
+        } else {
+            focusSquare.unhide()
+            statusViewController.scheduleMessage("TRY MOVING LEFT OR RIGHT", inSeconds: 5.0, messageType: .focusSquare)
+        }
+        
+        // Perform hit testing only when ARKit tracking is in a good state.
+        if let camera = session.currentFrame?.camera, case .normal = camera.trackingState,
+            let result = self.sceneView.smartHitTest(screenCenter) {
+            updateQueue.async {
+                self.sceneView.scene.rootNode.addChildNode(self.focusSquare)
+                self.focusSquare.state = .detecting(hitTestResult: result, camera: camera)
+            }
+            addObjectButton.isHidden = false
+            statusViewController.cancelScheduledMessage(for: .focusSquare)
+        } else {
+            updateQueue.async {
+                self.focusSquare.state = .initializing
+                self.sceneView.pointOfView?.addChildNode(self.focusSquare)
+            }
+            addObjectButton.isHidden = true
+        }
+    }
+    
+    // MARK: - Error handling
+    
+    func displayErrorMessage(title: String, message: String) {
+        // Blur the background.
+        blurView.isHidden = false
+        
+        // Present an alert informing about the error that has occurred.
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        let restartAction = UIAlertAction(title: "Restart Session", style: .default) { _ in
+            alertController.dismiss(animated: true, completion: nil)
+            self.blurView.isHidden = true
+            self.resetTracking()
+        }
+        alertController.addAction(restartAction)
+        present(alertController, animated: true, completion: nil)
     }
 }
